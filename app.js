@@ -5,7 +5,6 @@ var list = fs.readFileSync("input.txt", "utf-8").split("\n");
 
 var i;
 
-console.log("\n\x1b[34mSteamProfileChecker \x1b[37mBy \x1b[36mTrum\x1b[0m");
 console.log("---------------------");
 
 for (i of list) {
