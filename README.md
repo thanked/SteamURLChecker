@@ -1,5 +1,5 @@
 # SteamURLChecker
-Check avaliable custom URLs to use on your Steamprofile
+Check available custom URLs to use on your Steamprofile
 
 ### Requirements
 
