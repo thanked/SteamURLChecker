@@ -1,24 +1,55 @@
-const request = require("request");
-var fs = require('fs');
+const request = require('request');
+const colors = require('colors');
+// const opn = require('opn');
+const fs = require('fs');
 
-var list = fs.readFileSync("input.txt", "utf-8").split("\n");
+let list = fs.readFileSync("eng.txt", "utf-8").split('\r\n');
+let result = [""];
 
-var i;
+let chars = ["�", "-", "_", ".", ",", "?", "!", " "];
 
-console.log("---------------------");
+let i = -1;
+let id;
+let url;
+let token = "YOUR_STEAM_API_TOKEN"
 
-for (i of list) {
-  (function(id) {
-    request({
-      method: "GET",
-      url: "https://steamcommunity.com/id/" + id,
-    }, (error, response, body) => {
-      if (body.match("Error")) {
-        console.log("\x1b[32m" + id + "\x1b[0m");
-    fs.appendFileSync("output.txt", id + "\n");
-      } else {
-        console.log("\x1b[31m" + id + "\x1b[0m");
-      }
-    })
-  })(i);
+let interval = setInterval(function() {
+  i++;
+	
+  if (i >= list.length)
+  {
+    return clearInterval(interval);
+  }
+
+	id = list[i];
+	url = 'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=' + token + '&vanityurl=' + id;
+
+  request(url, { json: true }, (error, res, body) => {
+    if (error)
+    {
+      return console.log(error);
+    }
+	  
+    if (body.response.message === "No match")
+    {
+      return NotTaken(id);
+    }
+    else
+    {
+      return Taken(id);
+    }
+	});
+}, 3000);
+
+function NotTaken(id)
+{
+  console.log(colors.bgGreen(id));
+  fs.appendFileSync("output_eng.txt", id + "\n");
+  result.push(id);
+  //opn('http://steamcommunity.com/id/' + id, { app: ['C:/Program Files/Google/Chrome/Application/chrome.exe'] });
+}
+
+function Taken(id)
+{
+  console.log(colors.bgRed(id));
 }
