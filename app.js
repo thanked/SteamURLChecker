@@ -3,7 +3,7 @@ const colors = require('colors');
 // const opn = require('opn');
 const fs = require('fs');
 
-let list = fs.readFileSync("eng.txt", "utf-8").split('\r\n');
+let list = fs.readFileSync("input.txt", "utf-8").split('\r\n');
 let result = [""];
 
 let chars = ["�", "-", "_", ".", ",", "?", "!", " "];
@@ -44,7 +44,7 @@ let interval = setInterval(function() {
 function NotTaken(id)
 {
   console.log(colors.bgGreen(id));
-  fs.appendFileSync("output_eng.txt", id + "\n");
+  fs.appendFileSync("output.txt", id + "\n");
   result.push(id);
   //opn('http://steamcommunity.com/id/' + id, { app: ['C:/Program Files/Google/Chrome/Application/chrome.exe'] });
 }
