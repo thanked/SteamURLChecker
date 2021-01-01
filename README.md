@@ -4,6 +4,8 @@ Check available custom URLs to use on your Steamprofile
 ### Requirements
 
 - [Node.js v10.17.0+](https://nodejs.org/dist/latest-v10.x/node-v10.17.0.tar.xz)
+- [Npm Package: Request](https://www.npmjs.com/package/request)
+- [Npm Package: Colors](https://www.npmjs.com/package/colors)
 - A file editor ([Visual Studio Code](https://code.visualstudio.com/download), [Notepad++](https://notepad-plus-plus.org/))
 
 ### Installation
@@ -18,7 +20,7 @@ Check available custom URLs to use on your Steamprofile
 1. Open **input.txt** and put your ids you want to check in there, split the ids with a linebreak.
 2. **Shift + Right-click** in the folder you created and press **Open PowerShell window here**.
 3. Type **npm install** in the command prompt.
-4. Type **npm install request** in the command prompt.
+4. Type **npm install request colors** in the command prompt.
 5. Type **node app.js** in the command prompt.
 6. Open the **output.txt** file and there you have your available ids to use.
 
