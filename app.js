@@ -6,8 +6,6 @@ const fs = require('fs');
 let list = fs.readFileSync("input.txt", "utf-8").split('\r\n');
 let result = [""];
 
-let chars = ["�", "-", "_", ".", ",", "?", "!", " "];
-
 let i = -1;
 let id;
 let url;
